@@ -1,49 +1,49 @@
 # This is just an example of what your github action 
 # for this script might look like
 
-name: Update Directory Tree
+# name: Update Directory Tree
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+#   workflow_dispatch:
 
-jobs:
-  update_tree:
-    name: Update Directory Tree View in README.md
-    runs-on: ubuntu-latest
+# jobs:
+#   update_tree:
+#     name: Update Directory Tree View in README.md
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v2
 
-      - name: Set Up Bash
-        run: sudo apt-get install -y bash
+#       - name: Set Up Bash
+#         run: sudo apt-get install -y bash
 
-      - name: Generate Directory Tree View
-        run: |
-          chmod +x treeview.sh
-          ./treeview.sh . README.md
+#       - name: Generate Directory Tree View
+#         run: |
+#           chmod +x treeview.sh
+#           ./treeview.sh . README.md
 
-      - name: Check for Changes
-        id: git_diff
-        run: |
-          if git diff --exit-code README.md; then
-            echo "README.md is up-to-date."
-          else
-            echo "README.md needs updating."
-            echo "changes=true" >> $GITHUB_ENV
-          fi
+#       - name: Check for Changes
+#         id: git_diff
+#         run: |
+#           if git diff --exit-code README.md; then
+#             echo "README.md is up-to-date."
+#           else
+#             echo "README.md needs updating."
+#             echo "changes=true" >> $GITHUB_ENV
+#           fi
 
-      - name: Commit and Push Changes
-        if: env.changes == 'true'
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
-          git add README.md
-          git commit -m "Update directory tree in README.md"
-          git push origin main
+#       - name: Commit and Push Changes
+#         if: env.changes == 'true'
+#         run: |
+#           git config user.name "GitHub Actions Bot"
+#           git config user.email "actions@github.com"
+#           git add README.md
+#           git commit -m "Update directory tree in README.md"
+#           git push origin main
