@@ -1,5 +1,5 @@
 # readme-directory-tree
-Automatically generates and updates a directory tree structure in your `README.md`. 
+Helps you to maintain your project's README by automatically providing up-to-date directory structure in a treeview format.
 
 ## Features
 - Automatically generates and updates directory structure in a `README.md` file.
